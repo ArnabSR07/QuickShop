@@ -28,7 +28,7 @@ import sneakers1 from "./sneakers1.png";
 import sneakers2 from "./sneakers2.png";
 import sneakers3 from "./sneakers3.png";
 import visa from "./visa.png";
-import bKash from "./bkash.png";
+import bKash from "./bKash.png";
 import mastercard from "./mastercard.png";
 import nagad from "./nagad.png";
 import iconDelivery from "./icon-delivery.png"

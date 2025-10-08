@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+*{
+  overflow-x:hidden;
+}
+
+button:hover{
+  cursor:pointer;
+}

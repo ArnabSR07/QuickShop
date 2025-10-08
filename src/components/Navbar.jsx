@@ -1,0 +1,64 @@
+import React from 'react'
+import SearchBar from './SearchBar'
+import { assets } from '../assets/assets'
+import { Link } from 'react-router-dom'
+import { useWishlist } from '../context/WishlistContext'
+import { useCart } from '../context/CartContext'
+
+const Navbar = () => {
+  const { wishlist } = useWishlist();
+  const { cart, totalItems } = useCart();
+
+  return (
+    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
+      <Link to='/'><h1 className="text-2xl font-bold text-orange-600 me-40">QuickShop</h1></Link>
+      <SearchBar />
+
+      <div className="flex gap-4 items-center">
+        {/* Home */}
+        <Link to="/">
+          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center py-2 hover:bg-gray-200 transition">
+            <img src={assets.homePage} alt="home" className="w-5 h-5" />
+          </div>
+        </Link>
+
+        {/* Wishlist */}
+        <div className="relative">
+          <Link to="/wishlist">
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition py-2">
+              <img src={assets.favourite} alt="wishlist" className="w-5 h-5" />
+            </div>
+          </Link>
+          {wishlist.length > 0 && (
+            <span className="absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center shadow-md">
+              {wishlist.length}
+            </span>
+          )}
+        </div>
+
+        {/* Cart */}
+        <div className="relative">
+          <Link to="/cart">
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+              <img src={assets.shopcart} alt="cart" className="w-5 h-5" />
+            </div>
+          </Link>
+          {totalItems > 0 && (
+            <span className="absolute top-1.5 right-1.5 bg-red-500 text-white text-[10px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center shadow-md">
+              {totalItems}
+            </span>
+          )}
+        </div>
+
+        {/* Profile */}
+        <Link to="/profile">
+          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+            <img src={assets.customer} alt="profile" className="w-5 h-5" />
+          </div>
+        </Link>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

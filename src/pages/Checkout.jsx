@@ -16,7 +16,9 @@ const Checkout = () => {
   return (
     <div>
       <Navbar className="mb-8" />
-      <div className="my-11 px-6 py-8">
+      <div className=" my-2 sm:my-10 px-4 sm:px-6 py-8">
+
+      <div className="flex flex-wrap text-gray-400 text-sm mb-2 sm:mb-5 gap-1">
         <Link to="/profile">
           <span className="text-gray-400">Account</span>
         </Link>
@@ -36,37 +38,40 @@ const Checkout = () => {
         <Link to="/checkout">
           <span className="text-gray-400">Checkout</span>
         </Link>
+      </div>
 
-        <div className="flex justify-between">
+        
+
+        <div className="flex flex-col lg:flex-row justify-between gap-10">
           <div className="me-2">
             <h1 className="text-xl mt-5">Billing Details</h1>
 
             <div className="my-5">
-              <label id="firstName">First Name</label> <br />
+              <label id="firstName" className="block mb-1 text-sm">First Name</label> <br />
               <input
                 type="text"
                 id="firstName"
-                className="bg-gray-300 px-6 py-2 w-full rounded-md"
+                className="bg-gray-300 px-6 py-2 w-xl rounded-md"
               />
             </div>
             <div className="my-5">
-              <label id="comapanyName">Company Name</label> <br />
+              <label id="comapanyName" className="block mb-1 text-sm">Company Name</label> <br />
               <input
                 type="text"
                 id="comapanyName"
-                className="bg-gray-300 px-6 py-2 w-full rounded-md"
+                className="bg-gray-300 px-6 py-2 w-xl rounded-md"
               />
             </div>
             <div className="my-5">
-              <label id="street">Street Address</label> <br />
+              <label id="street" className="block mb-1 text-sm">Street Address</label> <br />
               <input
                 type="text"
                 id="street"
-                className="bg-gray-300 px-6 py-2 w-full rounded-md"
+                className="bg-gray-300 px-6 py-2 w-xl rounded-md"
               />
             </div>
             <div className="my-5">
-              <label id="apartment">Apartment, floor, etc. (optional)</label>{" "}
+              <label id="apartment" className="block mb-1 text-sm">Apartment, floor, etc. (optional)</label>{" "}
               <br />
               <input
                 type="text"
@@ -75,7 +80,7 @@ const Checkout = () => {
               />
             </div>
             <div className="my-5">
-              <label id="city">Town/City</label> <br />
+              <label id="city" className="block mb-1 text-sm">Town/City</label> <br />
               <input
                 type="text"
                 id="city"
@@ -83,24 +88,24 @@ const Checkout = () => {
               />
             </div>
             <div className="my-5">
-              <label id="phone">Phone Number</label> <br />
+              <label id="phone" className="block mb-1 text-sm">Phone Number</label> <br />
               <input
                 type="text"
                 id="phone"
-                className="bg-gray-300 px-6 py-2 w-full rounded-md"
+                className="bg-gray-300 px-6 py-2 w-xl rounded-md"
               />
             </div>
             <div className="my-5">
-              <label id="email">Email Address</label> <br />
+              <label id="email" className="block mb-1 text-sm">Email Address</label> <br />
               <input
                 type="text"
                 id="email"
-                className="bg-gray-300 px-6 py-2 w-full rounded-md"
+                className="bg-gray-300 px-6 py-2 w-xl rounded-md"
               />
             </div>
           </div>
 
-          <div className="w-full md:w-1/2 bg-gray-50 rounded-xl shadow-md p-6 flex flex-col justify-between">
+          <div className="w-full lg:w-1/2 bg-gray-50 rounded-xl shadow-md p-5 sm:p-6 flex flex-col justify-between">
             <h2 className="text-lg font-semibold mb-4">Your Order</h2>
 
             {/* Product List */}
@@ -166,20 +171,20 @@ const Checkout = () => {
             </div>
 
             {/* Coupon Section */}
-            <div className="flex items-center gap-3 mt-5">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-5">
               <input
                 type="text"
                 placeholder="Enter your coupon code"
                 className="flex-1 border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
-              <button className="bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition">
+              <button className="bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition w-full sm:w-auto">
                 Apply Coupon
               </button>
             </div>
 
             {/* Place Order Button */}
-            <div className="flex justify-start items-center mt-6">
-              <button className=" px-5 bg-orange-600 text-white font-medium py-2.5 rounded-md hover:bg-orange-700 transition">
+            <div className="flex justify-start sm:justify-end items-center mt-6">
+              <button className=" bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition w-full sm:w-auto">
                 Place Order
               </button>
             </div>

@@ -12,6 +12,7 @@ import { CartProvider } from "./context/CartContext";
 import Checkout from "./pages/Checkout";
 import { Toaster } from "react-hot-toast";
 import { ToastContainer,toast } from "react-toastify";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
     <>
       
       <Router>
+        <ScrollToTop>
         <ToastContainer/>
         <WishlistProvider>
           <CartProvider>
@@ -33,6 +35,7 @@ function App() {
             </Routes>
           </CartProvider>
         </WishlistProvider>
+        </ScrollToTop>
       </Router>
     </>
   );

@@ -8,6 +8,7 @@ import {Link} from 'react-router-dom'
 const Collection = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const productSize = assets.products.length
   
     const prevSlide = () => {
       setCurrentIndex((prev) => (prev === 0 ? assets.products.length - 1 : prev - 1));
@@ -25,10 +26,10 @@ const Collection = () => {
         {/* Label Section */}
 
         <div className="flex items-center gap-4">
-          <div className="w-5 h-10 bg-red-500 rounded"></div>
+          <div className="w-4 sm:w-5 h-8 sm:h-10 bg-red-500 rounded"></div>
           <div>
-            <div className="text-red-500 font-semibold text-base">Our Products</div>
-            <h2 className="text-2xl font-bold text-black mt-1">Explore Our Products</h2>
+            <div className="text-xs sm:text-sm text-red-500 font-semibold md:text-base">Our Products</div>
+            <h2 className=" text-lg sm:text-xl md:text-2xl font-bold text-black mt-0.5 sm:mt-1">Explore Our Products</h2>
           </div>
         </div>
 
@@ -45,13 +46,27 @@ const Collection = () => {
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full">
+        {/* Dekstop Screen */}
+
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-4 gap-6 w-full">
         {" "}
-        {assets.products.slice(currentIndex, currentIndex + 8).map((p) => (
+        {assets.products.slice(currentIndex % productSize, currentIndex + 8).map((p) => (
         
           <ProductCard key={p.id} product={p} />
         
         ))}
+      </div>
+
+      {/* For mobile Screens */}
+
+      <div className='flex md:hidden'>
+
+        {assets.products.slice(currentIndex % productSize, currentIndex + 1).map((p) => (
+        
+          <ProductCard key={p.id} product={p} />
+        
+        ))}
+
       </div>
 
       <div className="w-full flex justify-center mt-8">

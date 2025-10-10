@@ -34,6 +34,7 @@ import nagad from "./nagad.png";
 import iconDelivery from "./icon-delivery.png"
 import iconReturn from "./icon-return.png"
 import downArrow from "./Down Arrow.png"
+import dropdown from "./dropdown_icon.png"
 
 
 export const assets = {
@@ -50,6 +51,7 @@ export const assets = {
   qrcode,
   iconDelivery,
   iconReturn,
+  dropdown,
   headsetHero,
   downArrow,
   products: [

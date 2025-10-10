@@ -32,7 +32,7 @@ const WishList = () => {
       
          
 
-         <div className="flex justify-between items-center">
+         <div className="flex justify-between items-center mb-4">
           <h1 className="font-semibold text-2xl text-gray-500">
             Wishlist ({wishlist.length})
           </h1>
@@ -42,7 +42,7 @@ const WishList = () => {
           
         </div>
 
-        <div className="grid grid-cols-4 w-full gap-6 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full">
           {wishlist.slice(0, 4).map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}
@@ -68,7 +68,7 @@ const WishList = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-4 w-full gap-6 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 w-full">
           {assets.products.slice(0, 4).map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}

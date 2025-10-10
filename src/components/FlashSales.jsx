@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const FlashSales = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const productSize = assets.products.length;
 
   const prevSlide = () => {
     setCurrentIndex((prev) =>
@@ -58,87 +59,78 @@ const FlashSales = () => {
 
   return (
     <div className=" w-full px-6 py-8 my-5">
-      <div className="flex items-center justify-between gap-12 mb-5">
-
-
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 lg:gap-12 mb-5">
         {/* Label Section */}
-        <div className="flex items-center gap-4">
-          <div className="w-5 h-10 bg-red-500 rounded"></div>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="w-4 sm:w-5 h-8 sm:h-10 bg-red-500 rounded"></div>
 
           <div>
-            <div className="text-red-500 font-semibold text-base">Today's</div>
-            <h2 className="text-2xl font-bold text-black mt-1">Flash Sales</h2>
+            <div className="text-xs sm:text-sm text-red-500 font-semibold md:text-base">Today's</div>
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-black mt-0.5 sm:mt-1">Flash Sales</h2>
           </div>
         </div>
 
-        
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 justify-between sm:justify-end w-full sm:w-auto">
+          {/* Countdown Timer */}
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 lg:gap-6">
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] px-2 sm:px-0 sm:text-xs md:text-sm font-medium text-black mb-1">
+                Days
+              </span>
+              <span className="text-base sm:text-xl md:text-2xl  font-bold text-black">
+                {formatTime(timeLeft.days)}
+              </span>
+            </div>
+            <span className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-red-500 self-end pb-0.5 sm:pb-1">:</span>
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-black mb-0.5 sm:mb-1">Hours</span>
+              <span className="text-base sm:text-xl md:text-2xl  font-bold text-black">
+                {formatTime(timeLeft.hours)}
+              </span>
+            </div>
+            <span className=" text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-red-500 self-end pb-0.5 sm:pb-1">:</span>
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-black mb-0.5 sm:mb-1">
+                Minutes
+              </span>
+              <span className="text-base sm:text-xl md:text-2xl  font-bold text-black">
+                {formatTime(timeLeft.minutes)}
+              </span>
+            </div>
+            <span className="text-base sm:text-xl md:text-2xl lg:text-3xl font-bold text-red-500 self-end pb-0.5 sm:pb-1">:</span>
+            <div className="flex flex-col items-center">
+              <span className="text-[10px] sm:text-xs md:text-sm font-medium text-black mb-0.5 sm:mb-1">
+                Seconds
+              </span>
+              <span className="text-base sm:text-xl md:text-2xl font-bold text-black">
+                {formatTime(timeLeft.seconds)}
+              </span>
+            </div>
+          </div>
 
-        <div className="flex items-center gap-4">
+          {/* Navigation Arrows */}
 
-          
-        {/* Countdown Timer */}
-        <div className="flex items-center gap-6">
-          <div className="flex flex-col items-center">
-            <span className="text-xs font-medium text-black mb-1">Days</span>
-            <span className="text-2xl font-bold text-black">
-              {formatTime(timeLeft.days)}
-            </span>
-          </div>
-          <span className="text-2xl font-bold text-red-500 mt-3">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-xs font-medium text-black mb-1">Hours</span>
-            <span className="text-2xl font-bold text-black">
-              {formatTime(timeLeft.hours)}
-            </span>
-          </div>
-          <span className="text-2xl font-bold text-red-500 mt-3">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-xs font-medium text-black mb-1">Minutes</span>
-            <span className="text-2xl font-bold text-black">
-              {formatTime(timeLeft.minutes)}
-            </span>
-          </div>
-          <span className="text-2xl font-bold text-red-500 mt-3">:</span>
-          <div className="flex flex-col items-center">
-            <span className="text-xs font-medium text-black mb-1">Seconds</span>
-            <span className="text-2xl font-bold text-black">
-              {formatTime(timeLeft.seconds)}
-            </span>
+          <div className="flex gap-2">
+            <button
+              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+              onClick={prevSlide}
+            >
+              <ChevronLeft className="w-6 h-6 text-black" />
+            </button>
+            <button
+              className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+              onClick={nextSlide}
+            >
+              <ChevronRight className="w-6 h-6 text-black" />
+            </button>
           </div>
         </div>
-
-        {/* Navigation Arrows */}
-
-        <div className="flex gap-2">
-          <button
-            className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            onClick={prevSlide}
-          >
-            <ChevronLeft className="w-6 h-6 text-black" />
-          </button>
-          <button
-            className="w-12 h-12 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
-            onClick={nextSlide}
-          >
-            <ChevronRight className="w-6 h-6 text-black" />
-          </button>
-        </div>
-
-
-
-        </div>
-
-        
-
-        
-
-        
       </div>
 
       <br />
 
       {/* products */}
-      <div className="flex justify-center items-center">
+      <div className="hidden md:flex justify-center items-center">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 w-full">
           {" "}
           {assets.products.slice(currentIndex, currentIndex + 4).map((p) => (
@@ -146,6 +138,19 @@ const FlashSales = () => {
           ))}
         </div>
       </div>
+
+      {/* Products for mobile screen */}
+
+      <div className='flex md:hidden'>
+
+        {assets.products.slice(currentIndex % productSize, currentIndex + 1).map((p) => (
+        
+          <ProductCard key={p.id} product={p} />
+        
+        ))}
+
+      </div>
+
 
       <div className="w-full flex justify-center mt-8">
         <Link to="/allproducts">

@@ -1,21 +1,17 @@
 import React from "react";
 import { assets } from "../assets/assets";
-import { useCart } from "../context/CartContext";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 
 export default function Hero() {
 
-  const {cart,addToCart} = useCart();
-  const navigate = useNavigate();
 
   
   return (
    
-    <div className="px-6 py-8">
+    <div className="px-4 sm:px-6 md:px-6 py-8">
 
-      <div className="rounded-2xl w-full h-[600px] bg-gradient-to-r from-[#F9F9F9] to-[#E1E1E1] relative overflow-hidden mb-6 flex items-center">
+      <div className="rounded-2xl w-full min-h-[400px] md:h-[600px] bg-gradient-to-r from-[#F9F9F9] to-[#E1E1E1] relative overflow-hidden mb-6 md:flex items-center ">
       {/* Background image */}
       <div className="absolute inset-0 w-full h-full mt-12">
         <img
@@ -28,9 +24,9 @@ export default function Hero() {
       <div className="px-4 md:px-8 relative z-10">
         <div className="flex flex-col md:flex-row items-center">
           <div className="w-full md:w-2/3 md:pr-8 py-6">
-            <h1 className="text-4xl md:text-5xl font-bold font-inter tracking-tight py-6 mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-inter tracking-tight py-6 mb-6">
               Discover the{" "}
-              <span className="font-bold font-inter md:text-5xl text-[#FFAD33] py-6">
+              <span className="font-bold font-inter sm:inline md:text-5xl text-[#FFAD33] py-6">
                 Best Deals<br />
               </span>{" "}
                on Trendy Products

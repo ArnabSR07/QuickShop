@@ -46,12 +46,24 @@ const Cart = () => {
     setTotal(newSubtotal);
   };
 
+  const handleIncrease = (item) => {
+    handleQuantityChange(item, item.quantity + 1);
+  };
+
+  const handleDecrease = (item) => {
+    if (item.quantity > 1) {
+      handleQuantityChange(item, item.quantity - 1);
+    } else {
+      removeFromCart(item.id);
+    }
+  };
+
   return (
-    <div>
+    <div className="w-full overflow-x-hidden">
       <Navbar />
 
-      <div className="px-8 py-8 w-full">
-        <div className="text-gray-500">
+      <div className="px-4 sm:px-6 md:px-8 py-8 w-full">
+        <div className="text-gray-500 text-sm sm:text-base mb-6">
           <span>
             {" "}
             <Link to="/">Home</Link>{" "}
@@ -63,7 +75,7 @@ const Cart = () => {
           </span>
         </div>
 
-        <div className="grid grid-cols-4 px-3 py-2 gap-6 w-full">
+        <div className="hidden  md:grid grid-cols-4 px-3 py-2 gap-6 w-full">
           <span className="text-center">Product</span>
           <span className="text-center">Price</span>
           <span className="text-center">Quantity</span>
@@ -77,10 +89,11 @@ const Cart = () => {
             <div key={item.id}>
               <div
                 
-                className="grid grid-cols-4 gap-6 items-center bg-white shadow-md hover:shadow-lg transition-shadow duration-200 rounded-lg py-4 px-3 mt-4"
+                className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-center bg-white shadow-md hover:shadow-lg transition-shadow duration-200 rounded-lg py-4 px-3 mt-4"
               >
                 {/* Product */}
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 justify-between md:justify-start">
+                  <div className="flex items-center gap-3">
                   <button
                     onClick={() => removeFromCart(item.id)}
                     className="text-red-500 hover:text-red-600"
@@ -92,45 +105,88 @@ const Cart = () => {
                     alt={item.name}
                     className="w-16 h-16 object-contain"
                   />
+                  </div>
                   <span className="font-medium">{item.name}</span>
                 </div>
 
                 {/* Price */}
-                <div className="text-center text-gray-700 font-medium">
-                  ${item.price}
-                </div>
+                <div className="flex justify-between md:block text-gray-700 font-medium">
+                <span className="block sm:hidden text-gray-500 text-sm">
+                  Price:
+                </span>
+                <span className="md:flex justify-center items-center">${item.price}</span>
+              </div>
 
                 {/* Quantity */}
-                <div className="flex justify-center">
+                {/* <div className="flex justify-between md:justify-center items-center">
+                <span className="block md:hidden text-gray-500 text-sm">
+                  Quantity:
+                </span>
+                <input
+                  type="number"
+                  min="1"
+                  value={item.quantity}
+                  onChange={(e) =>
+                    handleQuantityChange(item, e.target.value)
+                  }
+                  className="w-16 text-center border rounded-md py-1 focus:outline-none focus:ring-1 focus:ring-orange-500"
+                />
+              </div> */}
+
+              <div className="flex justify-between md:justify-center items-center">
+                <span className="block md:hidden text-gray-500 text-sm">
+                  Quantity:
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleDecrease(item)}
+                    className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 transition font-semibold text-gray-600"
+                  >
+                    -
+                  </button>
                   <input
                     type="number"
                     min="1"
                     value={item.quantity}
-                    onChange={(e) => handleQuantityChange(item, e.target.value)}
+                    onChange={(e) =>
+                      handleQuantityChange(item, e.target.value)
+                    }
                     className="w-16 text-center border rounded-md py-1 focus:outline-none focus:ring-1 focus:ring-orange-500"
                   />
+                  <button
+                    onClick={() => handleIncrease(item)}
+                    className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-md hover:bg-gray-100 transition font-semibold text-gray-600"
+                  >
+                    +
+                  </button>
                 </div>
+              </div>
+
 
                 {/* Subtotal */}
-                <div className="text-center font-semibold text-gray-800">
-                  ${item.price * item.quantity}
-                </div>
+                <div className="flex justify-between md:block font-semibold text-gray-800">
+                <span className="block md:hidden text-gray-500 text-sm ">
+                  Subtotal:
+                </span>
+                <span className="md:flex justify-center items-center">${item.price * item.quantity}</span>
+              </div>
               </div>
             </div>
           ))}
 
-        <div className="grid grid-cols-4 gap-6 items-center mb-16">
-          <Link to="/allproducts">
-            <button className="px-8 py-2 font-semibold border border-black rounded-md hover:bg-gray-400">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-center mb-16 mt-10">
+          <Link to="/allproducts" className="sm:flex justify-center">
+            <button className="w-full sm:w-auto px-8 py-2  font-semibold border border-black rounded-md hover:bg-gray-400 transition">
               Return To Shop
             </button>
           </Link>
-          <div></div>
-          <div></div>
+          <div className="hidden md:block"></div>
+          <div className="hidden md:block"></div>
           <div className="flex items-center justify-center">
+
             {cart.length ? <button
               onClick={handleUpdateCart}
-              className=" px-8 py-2 font-semibold border border-black rounded-md hover:bg-gray-400"
+              className="w-full sm:w-auto px-8 py-2 font-semibold border border-black rounded-md hover:bg-gray-400 transition"
             >
               Update Cart
             </button> : ""}
@@ -139,19 +195,19 @@ const Cart = () => {
 
         
 
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-10">
 
          {/* left Section */}
 
          <div className="flex w-full md:w-1/2 gap-3">
     
-        <div className="flex items-start gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-5">
           <input
             type="text"
             placeholder="Enter your coupon code"
-            className="flex-1 border border-gray-300 rounded-md px-6 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
+            className="flex-1 border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-orange-500"
           />
-          <button className="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition">
+          <button className="bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition w-full sm:w-auto">
             Apply Coupon
           </button>
         </div>
@@ -175,7 +231,7 @@ const Cart = () => {
           <span className="text-orange-600">${total}</span>
         </div>
 
-        {cart.length ? <Link to='/checkout'><button className="mt-5 bg-orange-600 text-white text-sm px-8 font-medium py-2.5 rounded-md hover:bg-orange-700 transition">
+        {cart.length ? <Link to='/checkout' className="flex justify-center"><button className="mt-5  bg-orange-600 text-white text-sm px-8 font-medium py-2.5 rounded-md hover:bg-orange-700 transition">
           Proceed to Checkout
         </button></Link> : ""}
        

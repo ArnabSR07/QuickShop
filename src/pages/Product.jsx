@@ -36,24 +36,24 @@ const Product = () => {
   //Decrement
 
   const handleDecrement = () => {
-  if (quantity > 1) {
-    const updatedCart = cart.map((item) =>
-      item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
-    );
-    updateCart(updatedCart);
-  } else if (quantity === 1) {
-    removeFromCart(product.id);
-  }
-};
+    if (quantity > 1) {
+      const updatedCart = cart.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+      updateCart(updatedCart);
+    } else if (quantity === 1) {
+      removeFromCart(product.id);
+    }
+  };
 
-  const handleBuyNow = ()=>{
-    const existingItem = cart.find((item) => item.id === product.id)
-  if (!existingItem) {
-    addToCart({ ...product, quantity: 1 });
-  }
+  const handleBuyNow = () => {
+    const existingItem = cart.find((item) => item.id === product.id);
+    if (!existingItem) {
+      addToCart({ ...product, quantity: 1 });
+    }
 
-  navigate("/cart");
-  }
+    navigate("/cart");
+  };
 
   if (!product) return <h1>No product data</h1>;
 
@@ -140,11 +140,24 @@ const Product = () => {
           {/* Quantity + Buy Now */}
           <div className="flex items-center gap-4 mt-6">
             <div className="flex border rounded-md">
-              <button onClick={handleDecrement} className="px-3 py-1 hover:bg-orange-500">-</button>
+              <button
+                onClick={handleDecrement}
+                className="px-3 py-1 hover:bg-orange-500"
+              >
+                -
+              </button>
               <span className="px-4 py-1 border-x">{quantity}</span>
-              <button onClick={handleIncrement} className="px-3 py-1 hover:bg-orange-500">+</button>
+              <button
+                onClick={handleIncrement}
+                className="px-3 py-1 hover:bg-orange-500"
+              >
+                +
+              </button>
             </div>
-            <button onClick={handleBuyNow} className="bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600 transition">
+            <button
+              onClick={handleBuyNow}
+              className="bg-orange-500 text-white px-6 py-2 rounded-lg shadow hover:bg-orange-600 transition"
+            >
               Buy Now
             </button>
             <button className="border p-2 rounded-lg">
@@ -154,39 +167,31 @@ const Product = () => {
 
           {/* Delivery Info */}
 
-          <div className=" w-[399px] grid grid-rows-2 border border-black mt-6  text-sm text-gray-600 px-5 py-5">
-              
+          <div className=" w-full max-w-sm border border-black mt-6 text-sm text-gray-600 px-5 py-5 grid gap-4">
+            <div className="flex items-start sm:items-center gap-4">
+              <img
+                className="w-6 h-6 flex-shrink-0"
+                src={assets.iconDelivery}
+                alt="Delivery"
+              />
+              <div className="font-semibold">
+                Free Delivery <br className="sm:hidden" />
+                <span className="text-gray-500 text-xs sm:text-sm">
+                  Enter postal code for availability
+                </span>
+              </div>
+            </div>
 
-                 <p className="flex items-center">
-              {" "}
-              <img className="inline-block me-5" src={assets.iconDelivery} alt="" />
-              <div className="font-semibold" >Free Delivery <br /> Enter postal code for
-              availability</div>
-              <hr />
-               
-            </p>
-            <p className="flex items-center">
-              {" "}
-              <img className="inline-block me-5" src={assets.iconReturn} alt="" /> 
+            {/* Free Return */}
+            <div className="flex items-start sm:items-center gap-4">
+              <img
+                className="w-6 h-6 flex-shrink-0"
+                src={assets.iconReturn}
+                alt="Return"
+              />
               <div className="font-semibold">Free 30 Days Return Delivery</div>
-            </p>
-
+            </div>
           </div>
-
-          {/* <div className="mt-6  text-sm text-gray-600 space-y-2">
-            <p className="flex items-center">
-              {" "}
-              <img className="inline-block me-5" src={assets.iconDelivery} alt="" />
-              <div className="font-semibold" >Free Delivery <br /> Enter postal code for
-              availability</div>
-               
-            </p>
-            <p className="flex items-center">
-              {" "}
-              <img className="inline-block me-5" src={assets.iconReturn} alt="" /> 
-              <div className="font-semibold">Free 30 Days Return Delivery</div>
-            </p>
-          </div> */}
         </div>
       </div>
 

@@ -9,7 +9,7 @@ export default function Hero() {
   
   return (
    
-    <div className="px-4 sm:px-6 md:px-6 py-8">
+    <div className=" hidden lg:block px-4 sm:px-6 md:px-6 py-8">
 
       <div className="rounded-2xl w-full min-h-[400px] md:h-[600px] bg-gradient-to-r from-[#F9F9F9] to-[#E1E1E1] relative overflow-hidden mb-6 md:flex items-center ">
       {/* Background image */}

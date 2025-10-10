@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-sm">
+    <nav className="flex justify-between items-center px-8 py-4 bg-white shadow-md">
       {/* for Dekstop screen */}
 
       <Link to="/">
@@ -132,6 +132,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    <br />
     </div>
   );
 };
